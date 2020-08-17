@@ -659,8 +659,9 @@ class AliOssAdapter extends AbstractAdapter
         if ($config) {
             $options = array_merge($options, $this->getOptionsFromConfig($config));
         }
-
-        return array(OssClient::OSS_HEADERS => $options);
+        return $options;
+        //  Fix by zhangshijie  没有默认mimetype 会导致内存过大。
+        //        return array(OssClient::OSS_HEADERS => $options);
     }
 
     /**
